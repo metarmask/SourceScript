@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "test": "cake test",
-    "prepublish": "cake build"
+    "prepublishOnly": "cake build"
   },
   "repository": {
     "type": "git",
@@ -14,16 +14,14 @@
   },
   "main": "lib/index.js",
   "browserify": "lib/browserify.js",
-  "dependencies": {
-    "nomnom": "~1.5.3",
-    "wrench": "~1.4.4"
-  },
   "devDependencies": {
+    "browserify": "~2.7.1",
     "coffee-script": "~1.6.2",
-    "pegjs": "~0.7.0",
+    "fs-extra": "^5.0.0",
+    "klaw-sync": "^3.0.2",
     "mkdirp": "~0.3.5",
     "mocha": "~1.8.1",
-    "browserify": "~2.7.1",
+    "pegjs": "~0.7.0",
     "uglify-js": "~2.2.5"
   }
 }

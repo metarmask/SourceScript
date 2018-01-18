@@ -2,10 +2,10 @@
 
 task 'clean', 'remove build files', ->
   {unlinkSync} = require 'fs'
-  {rmdirSyncRecursive} = require 'wrench'
+  {removeSync} = require 'fs-extra'
 
   unlinkSync file for file in ['browser.js', 'browser.min.js'] when existsSync file
-  rmdirSyncRecursive dir for dir in ['lib', 'bin'] when existsSync dir
+  removeSync dir for dir in ['lib', 'bin'] when existsSync dir
 
 task 'build', 'clean, generate .js files and build the parser', ->
   {exec} = require 'child_process'
@@ -37,15 +37,15 @@ task 'build:parser', 'build the peg.js parser', ->
 task "test", "run tests", ->
   path = require 'path'
   Mocha = require 'mocha'
-  {readdirSyncRecursive} = require 'wrench'
+  klawSync = require 'klaw-sync'
 
   mocha = new Mocha
     reporter: 'spec'
   test = path.join ".", "test"
-  readdirSyncRecursive(test).filter( (file) ->
+  klawSync(test).filter( ({path: file}) ->
     path.extname(file) is '.coffee' and path.basename(file) isnt "helpers"
-  ).forEach (file) ->
-    mocha.addFile path.join test, file
+  ).forEach ({path: file}) ->
+    mocha.addFile file
   mocha.run()
 
 task 'browserify', 'build with browserify', ->
