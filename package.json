@@ -3,6 +3,7 @@
   "description": "A scripting language on top of Valve's Source Engine Config.",
   "version": "2.0.3",
   "author": "Philipp Schroer <mail@philworld.de>",
+  "license": "MIT",
   "scripts": {
     "test": "cake test",
     "prepublish": "cake build"
