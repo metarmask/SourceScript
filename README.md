@@ -10,9 +10,7 @@ games based on the Source Engine.
 
 Make sure to have Node.js installed.
 
-    git clone https://github.com/Philipp15b/SourceScript.git
-    cd SourceScript
-    npm install -g
+    npm install --save-dev sourcescript
 
 ## API
 
